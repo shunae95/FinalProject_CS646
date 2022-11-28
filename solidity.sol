@@ -5,9 +5,9 @@ pragma solidity >=0.7.0 <0.9.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/utils/Strings.sol";
 
-contract SneakerNFT is ERC721{
+contract BlazeNFT is ERC721{
     uint256 tokenId;
-    uint256 maxTokens;
+    uint256 public maxTokens;
     address public owner;
     uint256 price;
 
@@ -18,7 +18,7 @@ contract SneakerNFT is ERC721{
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol){
         tokenId = 1;
-        maxTokens = 4;
+        maxTokens = 1;
         owner = msg.sender;
         price = 1000000000000000000;
     }
@@ -43,7 +43,8 @@ contract SneakerNFT is ERC721{
     }
 
     // Increments the maxTokens so the owner can add more images and json files.
-    function addNewToken() public onlyOwner{
+    function addNewToken(address sender) public{
+        require(sender == owner, "Access Denied.");
         maxTokens = maxTokens + 1;
     }
 
@@ -63,12 +64,23 @@ contract SneakerNFT is ERC721{
     }
 
     // Verifies that the token is owned by that requester
-    function verify(uint256 _tokenId) public view returns (bool){
-        if (!isOwned(_tokenId) || msg.sender != ownerOf(_tokenId)){
+    function verify(uint256 _tokenId, address sender) public view returns (bool){
+        if (!isOwned(_tokenId) || sender != ownerOf(_tokenId)){
             return false;
         }else{
             return true;
         }
+    }
 
+    function isOwner(address sender) public view returns (bool){
+        return sender == owner;
+    }
+    
+    function getMaxTokens() public view returns (uint256){
+        return maxTokens;
+    }
+
+    function msgSender() public view returns (address){
+        return msg.sender;
     }
 }

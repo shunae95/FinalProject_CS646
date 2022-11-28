@@ -1,27 +1,21 @@
 // Contract Address, make sure to change this to match your created contract.
-    const address = "0x2197F26ff6e0CFEF0b3fBf6219e1E16b37f4F5C8"
-	const maxTokens = 4;
+    const address = "0x5F6B7CB782421ad93693836567d9B9dD83da5D1F"
+	let maxTokens = 1;
 	const NFTPrice = "1";
     const ownedList = [];
     const count = ownedList.length;
-
-		abi = [
-			{
-				"inputs": [],
-				"name": "addNewToken",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
+	
+	
+	abi = [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
 						"name": "symbol",
 						"type": "string"
 					}
@@ -80,6 +74,44 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "addNewToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -99,9 +131,193 @@
 			},
 			{
 				"inputs": [],
+				"name": "available",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getApproved",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMaxTokens",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "isApprovedForAll",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "isOwned",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "mintOne",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "msgSender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -174,193 +390,6 @@
 				"type": "function"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "Transfer",
-				"type": "event"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "transferFrom",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "available",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "balanceOf",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "getApproved",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					}
-				],
-				"name": "isApprovedForAll",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "isOwned",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "name",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "ownerOf",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "bytes4",
@@ -412,6 +441,29 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "upcomingToken",
 				"outputs": [
@@ -430,6 +482,11 @@
 						"internalType": "uint256",
 						"name": "_tokenId",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
 					}
 				],
 				"name": "verify",
@@ -447,33 +504,41 @@
 
 async function purchasedNFT(){
     let div = document.createElement("div");
+	web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(abi, address);
+	maxTokens = parseInt(await contract.methods.getMaxTokens().call());
+    for (let i = 1; i <= maxTokens; i++){
+		currentAddress = (await web3.eth.getAccounts())[0];
+		result = await contract.methods.verify(i, `${currentAddress}`).call();
+		// console.log(`${i}: ${result}`);
+		// web3.eth.getAccounts(console.log);
+		if (result){
+			let file = $.getJSON(`../NFTs/jsonfiles/${i}.json`, function (data) {
+				console.log(data);
 
-    for (let i = 1; i <= 4; i++){
-        let file = $.getJSON(`../NFTs/jsonfiles/${i}.json`, function (data) {
-			console.log(data);
-
-			let name = document.createElement("h4");
-			name.style = "margin:2rem; color: white;"
-			let nameText = document.createTextNode(data.name);
-			name.appendChild(nameText);
-			div.appendChild(name);
-			
-			
-			let image = document.createElement("img");
-			image.height = 300;
-			image.src = `../NFTs/images/${i}.png`;
-			div.appendChild(image);
-			
-			let desc = document.createElement("h5");
-			desc.style = "margin:1rem;  color: white;";
-			let descText = document.createTextNode("Originally " + data.desc + " - " + `#${data.tokenId}`);
-			desc.appendChild(descText);
-			div.appendChild(desc);
-			
-            document.getElementById("purchased").appendChild(div);
-			div.appendChild(document.createElement("hr"))
-		})
-    }
+				let name = document.createElement("h4");
+				name.style = "margin:2rem; color: white;"
+				let nameText = document.createTextNode(data.name);
+				name.appendChild(nameText);
+				div.appendChild(name);
+				
+				
+				let image = document.createElement("img");
+				image.height = 300;
+				image.src = `../NFTs/images/${i}.png`;
+				div.appendChild(image);
+				
+				let desc = document.createElement("h5");
+				desc.style = "margin:1rem;  color: white;";
+				let descText = document.createTextNode("Originally " + data.desc + " - " + `#${data.tokenId}`);
+				desc.appendChild(descText);
+				div.appendChild(desc);
+				
+				document.getElementById("purchased").appendChild(div);
+				div.appendChild(document.createElement("hr"))
+			})
+		}
+	}
     
 }
 
@@ -524,6 +589,7 @@ async function availability(id){
 	contract = new web3.eth.Contract(abi, address);
 	result = await contract.methods.isOwned(parseInt(id)).call();
 	currentTokenId = await contract.methods.upcomingToken().call();
+	maxTokens = parseInt(await contract.methods.getMaxTokens().call());
 	element = document.getElementById(id);
 	if (result == true){
 		element.innerHTML = "Sold Out!";
@@ -568,5 +634,43 @@ async function mint(id){
 		alert("Purchased!");
     });
 
+}
+
+async function accessCheck(){
+	web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(abi, address);
+	currentAddress = (await web3.eth.getAccounts())[0];
+	result = await contract.methods.isOwner(currentAddress).call();
+	if (result){
+		maxTokens = parseInt(await contract.methods.getMaxTokens().call());
+		console.log("Owner detected.");
+		panel = document.getElementById("controlPanel");
+		let tokenCounter = document.createElement("h5")
+		tokenCounter.style = "color:white;"
+		tokenCounter.id = "counter";
+		let tokenText = document.createTextNode(`Max Token(s): ${maxTokens}`)
+		tokenCounter.appendChild(tokenText);
+		panel.appendChild(tokenCounter);
+		let addNFT = document.createElement("button");
+		addNFT.innerHTML = "Increment Max Tokens"
+		addNFT.onclick = async function(){
+
+			//DECIDE IF YOU WOULD LIKE TO OVERRIDE THE ONLY OWNER AND USE
+			//AND PASS IN THE CURRENT ADDRESS AS AN OWNER CHECK BUT IT COULD
+			//BE MISS USED IF THE OWNER'S ADDRESS IS KNOWN.
+			result = await contract.methods.addNewToken(`${currentAddress}`).send({from:currentAddress});
+			if (result){
+				maxTokens = maxTokens + 1;
+				console.log(`Worked: ${maxTokens}`);
+				console.log(`Contract Max: ${await contract.methods.getMaxTokens().call()}`)
+				// console.log(`Sender ${await contract.methods.msgSender().call()}`)
+				document.getElementById("counter").innerHTML = `Max Token(s): ${maxTokens}`
+				alert(`Current Max Tokens is ${maxTokens}`)
+			}
+		};
+		panel.appendChild(addNFT);
+	}else{
+		console.log("Owner not detected.");
+	}
 }
 
