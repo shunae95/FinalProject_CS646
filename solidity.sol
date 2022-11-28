@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/utils/Strings.sol";
 
-contract BlazeNFT is ERC721{
+contract SneakerNFT is ERC721{
     uint256 tokenId;
     uint256 maxTokens;
     address public owner;
@@ -18,9 +18,9 @@ contract BlazeNFT is ERC721{
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol){
         tokenId = 1;
-        maxTokens = 4;
+        maxTokens = 5;
         owner = msg.sender;
-        price = 1000000000000000000;
+        price = 100;
     }
 
     // Not really used but contains the IPFS address for the data regarding the NFTs
