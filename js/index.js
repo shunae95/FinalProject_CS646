@@ -498,8 +498,6 @@ async function initialAvailability(){
 async function availability(id){
 	web3 = new Web3(window.ethereum);
 	contract = new web3.eth.Contract(abi, address);
-	console.log("ASD")
-	console.log(id==="1");
 	result = await contract.methods.isOwned(parseInt(id)).call();
 	currentTokenId = await contract.methods.upcomingToken().call();
 	// upcomingNFT = await contract.methods.
