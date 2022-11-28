@@ -1,7 +1,9 @@
 // Contract Address, make sure to change this to match your created contract.
     const address = "0x230c4A635df104cc0F77Dd60c47711db561b582A"
+	// const address = "0x9Fceb49100Be88656007016413c52B2AA693bCA5"
 	let maxTokens = 1;
 	const NFTPrice = "1";
+	// const NFTPrice = "100";
     const ownedList = [];
     const count = ownedList.length;
 	
@@ -526,6 +528,10 @@ async function purchasedNFT(){
 				let image = document.createElement("img");
 				image.height = 300;
 				image.src = `../NFTs/images/${i}.png`;
+				//Get IPFS path from json file and pull image from IPFS
+				// let image_path = data.image.substring(7);
+				// console.log(image_path);
+				// image.src = `https://ipfs.io/ipfs/${image_path}`;
 				div.appendChild(image);
 				
 				let desc = document.createElement("h5");
@@ -558,7 +564,10 @@ async function initialAvailability(){
 			let image = document.createElement("img");
 			image.height = 300;
 			image.src = `../NFTs/images/${i}.png`;
-            // image.src = `https://ipfs.io/ipfs/QmP7D1oRJAW6wQBPfzcEsRbM5hAcxXa2U95eJs7FsjRocW/${i}.png`;
+			//Get IPFS path from json file and pull image from IPFS
+			// let image_path = data.image.substring(7);
+			// console.log(image_path);
+			// image.src = `https://ipfs.io/ipfs/${image_path}`;
 			div.appendChild(image);
 			
 			let desc = document.createElement("h5");
@@ -616,7 +625,8 @@ async function mint(id){
       account = accounts[0];
       web3 = new Web3(window.ethereum);
       contract = new web3.eth.Contract(abi, address);
-    contract.methods.mintOne().send({from:account,value:web3.utils.toWei(NFTPrice,'ether')})
+    // contract.methods.mintOne().send({from:account,value:web3.utils.toWei(NFTPrice,'wei')})
+	contract.methods.mintOne().send({from:account,value:web3.utils.toWei(NFTPrice,'ether')})
     .on("transactionHash",function(hash){
         console.log("TRANSACTION HASH: "+hash);
 		element = document.getElementById(id);
