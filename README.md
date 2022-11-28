@@ -22,8 +22,8 @@
 - [AJ Nettles](https://github.com/DelMonteAJ)
 - [Leigh Allison](https://github.com/Ldallison)
   
-<a href="https://github.com/shunae95/CS646_Project1/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ldallison/CS646_Project1" />
+<a href="https://github.com/shunae95/FinalProject_CS646/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=shunae95/FinalProject_CS646" />
 </a>
 
 ---
