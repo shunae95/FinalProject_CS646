@@ -1,5 +1,5 @@
 // Contract Address, make sure to change this to match your created contract.
-    const address = "0x5F6B7CB782421ad93693836567d9B9dD83da5D1F"
+    const address = "0x230c4A635df104cc0F77Dd60c47711db561b582A"
 	let maxTokens = 1;
 	const NFTPrice = "1";
     const ownedList = [];
@@ -654,10 +654,6 @@ async function accessCheck(){
 		let addNFT = document.createElement("button");
 		addNFT.innerHTML = "Increment Max Tokens"
 		addNFT.onclick = async function(){
-
-			//DECIDE IF YOU WOULD LIKE TO OVERRIDE THE ONLY OWNER AND USE
-			//AND PASS IN THE CURRENT ADDRESS AS AN OWNER CHECK BUT IT COULD
-			//BE MISS USED IF THE OWNER'S ADDRESS IS KNOWN.
 			result = await contract.methods.addNewToken(`${currentAddress}`).send({from:currentAddress});
 			if (result){
 				maxTokens = maxTokens + 1;
