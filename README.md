@@ -28,5 +28,5 @@
 
 ---
 ### Notes
-> The price of each NFT is 100 wei, but could be adjusted by editing the "solidity.sol" code contents and the "index.js" amount that is transferred in the contract.
+> The price of each NFT is 1 ETH, but could be adjusted by editing the "solidity.sol" code contents and the "index.js" amount that is transferred in the contract.
 > Only one NFT is available at a time, starting with the first token until all NFTs are purchased.

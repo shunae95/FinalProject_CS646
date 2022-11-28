@@ -18,9 +18,9 @@ contract SneakerNFT is ERC721{
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol){
         tokenId = 1;
-        maxTokens = 5;
+        maxTokens = 4;
         owner = msg.sender;
-        price = 100;
+        price = 1000000000000000000;
     }
 
     // Not really used but contains the IPFS address for the data regarding the NFTs

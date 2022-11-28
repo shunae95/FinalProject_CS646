@@ -1,7 +1,7 @@
 // Contract Address, make sure to change this to match your created contract.
     const address = "0xC64b3165C0Ecc1567DD74E352e8682557E9be788";
-	const maxTokens = 5;
-	const NFTPrice = "100";
+	const maxTokens = 4;
+	const NFTPrice = "1";
 
     let welcome = "Current User: " + address.toString;
 
@@ -464,8 +464,8 @@ async function initialAvailability(){
 			
 			let image = document.createElement("img");
 			image.height = 300;
-			// image.src = `../NFTs/images/${i}.png`;
-            image.src = `https://ipfs.io/ipfs/QmP7D1oRJAW6wQBPfzcEsRbM5hAcxXa2U95eJs7FsjRocW/${i}.png`;
+			image.src = `../NFTs/images/${i}.png`;
+            // image.src = `https://ipfs.io/ipfs/QmP7D1oRJAW6wQBPfzcEsRbM5hAcxXa2U95eJs7FsjRocW/${i}.png`;
 			div.appendChild(image);
 			
 			let desc = document.createElement("h5");
@@ -514,7 +514,7 @@ async function availability(id){
 		if (id == currentTokenId){
 			element.innerHTML = "Available Now!";
 			element.onclick = async function(){
-                confirm("The price of this NFT is 100 wei, would you like to continue?");
+                confirm("The price of this NFT is 1 ETH, would you like to continue?");
 				await mint(id);
 			}
 		}else{
@@ -530,7 +530,7 @@ async function mint(id){
       account = accounts[0];
       web3 = new Web3(window.ethereum);
       contract = new web3.eth.Contract(abi, address);
-    contract.methods.mintOne().send({from:account,value:web3.utils.toWei(NFTPrice,'wei')})
+    contract.methods.mintOne().send({from:account,value:web3.utils.toWei(NFTPrice,'ether')})
     .on("transactionHash",function(hash){
         console.log("TRANSACTION HASH: "+hash);
 		element = document.getElementById(id);
