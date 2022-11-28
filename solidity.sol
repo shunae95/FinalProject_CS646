@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.7.1/contracts/utils/Strings.sol";
 
-contract BlazeNFT is ERC721{
+contract SneakerNFT is ERC721{
     uint256 tokenId;
     uint256 maxTokens;
     address public owner;

@@ -465,11 +465,12 @@ async function initialAvailability(){
 			let image = document.createElement("img");
 			image.height = 300;
 			image.src = `../NFTs/images/${i}.png`;
+            // image.src = `https://ipfs.io/ipfs/QmP7D1oRJAW6wQBPfzcEsRbM5hAcxXa2U95eJs7FsjRocW/${i}.png`;
 			div.appendChild(image);
 			
 			let desc = document.createElement("h5");
 			desc.style = "margin:1rem;  color: white;";
-			let descText = document.createTextNode("Originally " + data.desc + " - " + `#${data.tokenId}`);
+			let descText = document.createTextNode(data.desc + " - " + `#${data.tokenId}`);
 			desc.appendChild(descText);
 			div.appendChild(desc);
 
