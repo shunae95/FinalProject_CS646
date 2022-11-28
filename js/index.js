@@ -1,9 +1,9 @@
 // Contract Address, make sure to change this to match your created contract.
-    const address = "0xC64b3165C0Ecc1567DD74E352e8682557E9be788";
+    const address = "0x2197F26ff6e0CFEF0b3fBf6219e1E16b37f4F5C8"
 	const maxTokens = 4;
 	const NFTPrice = "1";
-
-    let welcome = "Current User: " + address.toString;
+    const ownedList = [];
+    const count = ownedList.length;
 
 		abi = [
 			{
@@ -445,15 +445,43 @@
 			}
 		]
 
+async function purchasedNFT(){
+    let div = document.createElement("div");
 
+    for (let i = 1; i <= 4; i++){
+        let file = $.getJSON(`../NFTs/jsonfiles/${i}.json`, function (data) {
+			console.log(data);
+
+			let name = document.createElement("h4");
+			name.style = "margin:2rem; color: white;"
+			let nameText = document.createTextNode(data.name);
+			name.appendChild(nameText);
+			div.appendChild(name);
+			
+			
+			let image = document.createElement("img");
+			image.height = 300;
+			image.src = `../NFTs/images/${i}.png`;
+			div.appendChild(image);
+			
+			let desc = document.createElement("h5");
+			desc.style = "margin:1rem;  color: white;";
+			let descText = document.createTextNode("Originally " + data.desc + " - " + `#${data.tokenId}`);
+			desc.appendChild(descText);
+			div.appendChild(desc);
+			
+            document.getElementById("purchased").appendChild(div);
+			div.appendChild(document.createElement("hr"))
+		})
+    }
+    
+}
 
 async function initialAvailability(){
 	let div = document.createElement("div");
 	for (let i = 1; i <= maxTokens; i++){
 		let file = $.getJSON(`../NFTs/jsonfiles/${i}.json`, function (data) {
 			console.log(data);
-
-            // let welcome = docume
 
 			let name = document.createElement("h4");
 			name.style = "margin:2rem; color: white;"
@@ -482,12 +510,7 @@ async function initialAvailability(){
 			div.appendChild(document.createElement("br"));
 			div.appendChild(document.createElement("br"));
 			
-
-			// element = document.getElementById(`name${i}`);
-			// element.innerHTML = data.name
-			// element = document.getElementById(`desc${i}`);
-			// element.innerHTML = "Originally " + data.desc + "<br>" + `ID: ${data.tokenId}`;
-			document.getElementById("NFTs").appendChild(div);
+            document.getElementById("NFTs").appendChild(div);
 			div.appendChild(document.createElement("hr"))
 
 			
@@ -501,14 +524,11 @@ async function availability(id){
 	contract = new web3.eth.Contract(abi, address);
 	result = await contract.methods.isOwned(parseInt(id)).call();
 	currentTokenId = await contract.methods.upcomingToken().call();
-	// upcomingNFT = await contract.methods.
-    // var welcome = "Current User Address: " + address;
-    // document.getElementById('welcome').innerHTML = welcome;
 	element = document.getElementById(id);
 	if (result == true){
 		element.innerHTML = "Sold Out!";
 		element.disabled = true;
-		
+		ownedList.push(id);
 	}else{
 		
 		if (id == currentTokenId){
@@ -522,8 +542,8 @@ async function availability(id){
 			element.disabled = true;
 		}
 	}
-
 }
+
 async function mint(id){
 
     accounts = await ethereum.request({ method: 'eth_requestAccounts' });
