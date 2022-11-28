@@ -42,6 +42,11 @@ contract SneakerNFT is ERC721{
         wallet.transfer(price);
     }
 
+    // Increments the maxTokens so the owner can add more images and json files.
+    function addNewToken() public onlyOwner{
+        maxTokens = maxTokens + 1;
+    }
+
     // Returns upcoming token ID
     function upcomingToken() public view returns(uint256){
         return tokenId;
